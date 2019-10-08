@@ -1,0 +1,96 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+bin/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+include/
+local/lib
+local/bin
+local/include
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# Rope
+.ropeproject
+
+# Django stuff:
+*.log
+*.pot
+/static
+/media
+
+# Sphinx documentation
+docs/_build/
+
+#locals
+keys/
+app/src/db.sqlite3
+
+#local ignores
+src/asterisk-dialplan-master
+share
+
+#ipython
+*.ipynb
+
+#OSX Files
+.DS_Store
+.viminfo
+
+djcelery
+
+#pid files
+*.pid
+
+#celery workers
+celerybeat-schedule
+.bash_history
+
+#media
+
+#environment variables
+env/*.env
+
+pgdata
+ssl
+.env
+dependencies
+data
+
+.coverage
+.pytest_cache

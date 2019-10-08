@@ -1,0 +1,9 @@
+psycopg2-binary
+django
+gunicorn
+python-dateutil
+django-reversion
+django-jet
+django-object-actions
+django-filter
+django-cors-headers
