@@ -46,7 +46,8 @@ DJANGO_APPS = [
 
 ADMIN_APPS = [
     'jet',
-    'reversion'
+    'reversion',
+    'import_export',
 ]
 
 THIRDPARTY_APPS = [

@@ -60,6 +60,39 @@ class Scene(models.Model):
 	def __str__(self):
 		return "{} {}".format(self.act, self.name)
 
+	class Meta:
+		ordering = [
+			'start_page',
+			'end_page',
+			'name',
+		]
+
+
+class Song(models.Model):
+	show = models.ForeignKey(Show, on_delete=models.CASCADE)
+	scene = models.ForeignKey(Scene, on_delete=models.CASCADE)
+	name = models.CharField(max_length=255)
+	lib_start_page = models.PositiveIntegerField()
+	lib_end_page = models.PositiveIntegerField()
+	featured_characters = models.ManyToManyField(
+		'Character',
+		blank=True,
+		related_name='featured_songs')
+	ensemble_characters = models.ManyToManyField(
+		'Character',
+		blank=True,
+		related_name='ensemble_songs')
+
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		ordering = [
+			'lib_start_page',
+			'lib_end_page',
+			'name',
+		]
+
 
 class CharacterType(models.Model):
 	name = models.CharField(max_length=255)
