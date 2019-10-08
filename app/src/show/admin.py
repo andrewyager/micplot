@@ -1,55 +1,9 @@
 from django.contrib import admin
 from reversion.admin import VersionAdmin
-from import_export import resources
 from import_export.admin import ImportExportMixin
+from .forms import *
 from .models import *
-
-class ShowResource(resources.ModelResource):
-	class Meta:
-		model = Show
-
-
-class RunResource(resources.ModelResource):
-	class Meta:
-		model = Run
-
-
-class PerformanceResource(resources.ModelResource):
-	class Meta:
-		model = Performance
-
-class ActResource(resources.ModelResource):
-	class Meta:
-		model = Act
-
-
-class SceneLocationResource(resources.ModelResource):
-	class Meta:
-		model = SceneLocation
-
-
-class SceneResource(resources.ModelResource):
-	class Meta:
-		model = Scene
-
-class SongResource(resources.ModelResource):
-	class Meta:
-		model = Song
-
-
-class CharacterResource(resources.ModelResource):
-	class Meta:
-		model = Character
-
-
-class CharacterTypeResource(resources.ModelResource):
-	class Meta:
-		model = CharacterType
-
-
-class EntryResource(resources.ModelResource):
-	class Meta:
-		model = Entry
+from .resources import *
 
 
 class PerformanceInline(admin.TabularInline):
@@ -67,12 +21,15 @@ class SceneLocationInline(admin.TabularInline):
 
 class SceneInline(admin.TabularInline):
 	model = Scene
+	form = SceneForm
 
 class SongInline(admin.TabularInline):
 	model = Song
+	form = SongForm
 
 class CharacterInline(admin.TabularInline):
 	model = Character
+
 
 @admin.register(SceneLocation)
 class SceneLocationAdmin(VersionAdmin):
@@ -96,6 +53,15 @@ class ShowAdmin(ImportExportMixin, VersionAdmin):
 	resource_class = ShowResource
 
 
+@admin.register(Act)
+class ActAdmin(ImportExportMixin, VersionAdmin):
+	list_display = [
+		'show',
+		'name',
+	]
+	resource_class = ActResource
+
+
 @admin.register(Scene)
 class SceneAdmin(ImportExportMixin, VersionAdmin):
 	list_display = [
@@ -107,6 +73,7 @@ class SceneAdmin(ImportExportMixin, VersionAdmin):
 		'end_page',
 	]
 	resource_class = SceneResource
+	form = SceneForm
 
 
 @admin.register(Song)
@@ -119,6 +86,7 @@ class SongAdmin(ImportExportMixin, VersionAdmin):
 		'lib_end_page',
 	]
 	resource_class = SongResource
+	form = SongForm
 
 @admin.register(CharacterType)
 class CharacterTypeAdmin(ImportExportMixin, VersionAdmin):
@@ -138,6 +106,15 @@ class CharacterAdmin(ImportExportMixin, VersionAdmin):
 	resource_class = CharacterResource
 
 
+@admin.register(CharacterGroup)
+class CharacterGroupAdmin(ImportExportMixin, VersionAdmin):
+	list_display = [
+		'show',
+		'name',
+	]
+	resource_class = CharacterGroupResource
+
+
 @admin.register(Entry)
 class EntryAdmin(ImportExportMixin, VersionAdmin):
 	list_display = [
@@ -148,3 +125,4 @@ class EntryAdmin(ImportExportMixin, VersionAdmin):
 		'type'
 	]
 	resource_class = EntryResource
+	form = EntryForm

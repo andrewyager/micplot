@@ -62,6 +62,7 @@ class Scene(models.Model):
 
 	class Meta:
 		ordering = [
+			'show',
 			'start_page',
 			'end_page',
 			'name',
@@ -78,16 +79,25 @@ class Song(models.Model):
 		'Character',
 		blank=True,
 		related_name='featured_songs')
+	featured_groups = models.ManyToManyField(
+		'CharacterGroup',
+		blank=True,
+		related_name='featured_group_songs')
 	ensemble_characters = models.ManyToManyField(
 		'Character',
 		blank=True,
 		related_name='ensemble_songs')
+	ensemble_groups = models.ManyToManyField(
+		'CharacterGroup',
+		blank=True,
+		related_name='ensemble_group_songs')
 
 	def __str__(self):
 		return self.name
 
 	class Meta:
 		ordering = [
+			'show',
 			'lib_start_page',
 			'lib_end_page',
 			'name',
@@ -109,10 +119,33 @@ class Character(models.Model):
 	def __str__(self):
 		return self.name
 
+class CharacterGroup(models.Model):
+	show = models.ForeignKey(Show, on_delete=models.CASCADE)
+	name = models.CharField(max_length=255)
+	scenes = models.ManyToManyField(Scene, blank=True)
+	characters = models.ManyToManyField(Character, blank=True)
+
+	def __str__(self):
+		return self.name
+
 class Entry(models.Model):
+	show = models.ForeignKey(Show, on_delete=models.CASCADE)
+	entry_type = models.CharField(
+		max_length=255,
+		choices=[
+			('character', 'Character'),
+			('group', 'Group')
+		])
 	character = models.ForeignKey(
 		Character,
-		on_delete=models.CASCADE)
+		on_delete=models.CASCADE,
+		blank=True,
+		null=True)
+	character_group = models.ForeignKey(
+		CharacterGroup,
+		on_delete=models.CASCADE,
+		blank=True,
+		null=True)
 	scene = models.ForeignKey(
 		Scene,
 		on_delete=models.CASCADE)
