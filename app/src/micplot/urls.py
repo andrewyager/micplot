@@ -20,4 +20,5 @@ from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^jet/', include('jet.urls', 'jet')),
+    url(r'^cast/', include('cast.urls', 'cast')),
 ]

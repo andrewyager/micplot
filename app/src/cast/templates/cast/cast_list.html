@@ -1,0 +1,20 @@
+{% extends 'micplot/base.html' %}
+
+{% block title %}Cast List - {{ run.show.name }}{% endblock %}
+{% block content %}
+<h2>{{ run }}</h2>
+<table>
+	<tbody>
+		{% for character in characters_in_show %}
+		<tr>
+			<th>{{ character.name }}</th>
+		</tr>
+		{% for actor in character.actor_list %}
+		<tr>
+			<td>{{ actor.primary_actor.name }}</td>
+		</tr>
+		{% endfor %}
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

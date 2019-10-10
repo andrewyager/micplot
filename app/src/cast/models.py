@@ -38,6 +38,20 @@ class CharacterInShow(models.Model):
 		return "{} ({})".format(self.character, self.primary_actor)
 
 
+	class Meta:
+		unique_together = [
+			'run',
+			'character',
+			'primary_actor'
+		]
+		ordering = [
+			'run',
+			'character__character_type__ordering_preference',
+			'character__name',
+			'primary_actor'
+		]
+
+
 
 
 

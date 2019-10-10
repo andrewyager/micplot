@@ -1,4 +1,5 @@
 backports.csv==1.0.7
+beautifulsoup4==4.8.1
 certifi==2019.9.11
 chardet==3.0.4
 check-manifest==0.39
@@ -7,6 +8,7 @@ devpi-client==5.0.0
 devpi-common==3.4.0
 diff-match-patch==20181111
 Django==2.2.6
+django-bootstrap4==1.0.1
 django-filter==2.2.0
 django-guardian==2.1.0
 django-import-export==1.2.0
@@ -33,6 +35,7 @@ pytz==2019.3
 PyYAML==5.1.2
 requests==2.22.0
 six==1.12.0
+soupsieve==1.9.4
 sqlparse==0.3.0
 tablib==0.13.0
 toml==0.10.0

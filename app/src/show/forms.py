@@ -82,9 +82,9 @@ class SongForm(forms.ModelForm):
 		if show:
 			self.fields['scene'].queryset = Scene.objects.filter(show=show)
 			self.fields['featured_characters'].queryset = Character.objects.filter(show=show)
-			self.fields['featured_groups'].queryset = Character.objects.filter(show=show)
+			self.fields['featured_groups'].queryset = CharacterGroup.objects.filter(show=show)
 			self.fields['ensemble_characters'].queryset = Character.objects.filter(show=show)
-			self.fields['ensemble_groups'].queryset = Character.objects.filter(show=show)
+			self.fields['ensemble_groups'].queryset = CharacterGroup.objects.filter(show=show)
 
 
 

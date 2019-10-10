@@ -106,9 +106,16 @@ class Song(models.Model):
 
 class CharacterType(models.Model):
 	name = models.CharField(max_length=255)
+	ordering_preference = models.PositiveIntegerField(default=0)
 
 	def __str__(self):
 		return self.name
+
+	class Meta:
+		ordering = [
+			'ordering_preference',
+			'name'
+		]
 
 class Character(models.Model):
 	show = models.ForeignKey(Show, on_delete=models.CASCADE)
@@ -118,6 +125,13 @@ class Character(models.Model):
 
 	def __str__(self):
 		return self.name
+
+	class Meta:
+		ordering = [
+			'show',
+			'character_type__ordering_preference',
+			'name',
+		]
 
 class CharacterGroup(models.Model):
 	show = models.ForeignKey(Show, on_delete=models.CASCADE)
@@ -151,11 +165,12 @@ class Entry(models.Model):
 		on_delete=models.CASCADE)
 	enter_page = models.PositiveIntegerField()
 	exit_page = models.PositiveIntegerField(blank=True, null=True)
+	speaks = models.BooleanField(default=True)
 	type = models.CharField(
 		max_length=255,
 		choices=[
 			('On Stage', 'On Stage'),
-			('Off Stage', 'Off Stage'),
+			('Off Stage', 'Off Stage Voice/Action'),
 		],
 		default='On Stage')
 
