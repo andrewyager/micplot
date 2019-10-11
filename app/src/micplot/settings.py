@@ -183,3 +183,7 @@ MARKDOWN_DEUX_STYLES = {
 JET_DEFAULT_THEME = 'light-green'
 JET_SIDE_MENU_COMPACT = True
 JET_CHANGE_FORM_SIBLING_LINKS = False
+
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}

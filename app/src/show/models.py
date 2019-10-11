@@ -1,4 +1,5 @@
 from django.db import models
+from django.apps import apps
 
 class Show(models.Model):
 	name = models.CharField(max_length=255)
@@ -94,6 +95,39 @@ class Song(models.Model):
 
 	def __str__(self):
 		return self.name
+
+	def featured_actor_list(self, run):
+		CharacterInShow = apps.get_model('cast.CharacterInShow')
+		actors = []
+		for character in self.featured_characters.all():
+			actor_list = CharacterInShow.objects.filter(character=character)
+			for actor in actor_list:
+				if actor not in actors:
+					actors.append(actor)
+		for group in self.featured_groups.all():
+			for character in group.characters.all():
+				actor_list = CharacterInShow.objects.filter(character=character)
+				for actor in actor_list:
+					if actor not in actors:
+						actors.append(actor)
+		return actors
+
+	def ensemble_actor_list(self, run):
+		CharacterInShow = apps.get_model('cast.CharacterInShow')
+		actors = []
+		for character in self.ensemble_characters.all():
+			actor_list = CharacterInShow.objects.filter(character=character)
+			for actor in actor_list:
+				if actor not in actors:
+					actors.append(actor)
+		for group in self.ensemble_groups.all():
+			for character in group.characters.all():
+				actor_list = CharacterInShow.objects.filter(character=character)
+				for actor in actor_list:
+					if actor not in actors:
+						actors.append(actor)
+		return actors
+	
 
 	class Meta:
 		ordering = [

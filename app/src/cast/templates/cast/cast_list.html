@@ -3,6 +3,7 @@
 {% block title %}Cast List - {{ run.show.name }}{% endblock %}
 {% block content %}
 <h2>{{ run }}</h2>
+<h3>Cast List</h3>
 <table>
 	<tbody>
 		{% for character in characters_in_show %}
@@ -12,6 +13,21 @@
 		{% for actor in character.actor_list %}
 		<tr>
 			<td>{{ actor.primary_actor.name }}</td>
+		</tr>
+		{% endfor %}
+		{% endfor %}
+	</tbody>
+</table>
+<h3>Cast Groupings</h3>
+<table>
+	<tbody>
+		{% for group in character_groups %}
+		<tr>
+			<th>{{ group.name }}</th>
+		</tr>
+		{% for character in group.characters %}
+		<tr>
+			<td>{{ character.name }} ({% for actor in character.actors %}{{actor.primary_actor.name}}{% if not forloop.last %}, {% endif%}{%endfor%})</td>
 		</tr>
 		{% endfor %}
 		{% endfor %}
