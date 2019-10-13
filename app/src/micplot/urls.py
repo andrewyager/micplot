@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 
+admin.site.site_header = 'MicPlot'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^jet/', include('jet.urls', 'jet')),
