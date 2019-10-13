@@ -1,0 +1,23 @@
+{% extends 'micplot/base.html' %}
+
+{% block title %}Actor List - {{ run.show.name }}{% endblock %}
+{% block content %}
+<h2>{{ run }}</h2>
+<h3>Cast List</h3>
+<div class="container">
+		{% for character in characters %}
+		{% ifchanged character.primary_actor.name %}
+		{% if not forloop.first %}
+			</div>
+		</div>
+		{% endif %}
+		<div class="row">
+			<div class="col-md-4">{{ character.primary_actor.name }}</div>
+			<div class="col-md-8">
+		{% endifchanged %}
+			{{ character.character.name }}<br />
+		{% endfor %}
+			</div>
+		</div>
+</div>
+{% endblock %}

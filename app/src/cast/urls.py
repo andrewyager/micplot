@@ -5,4 +5,5 @@ from . import views
 app_name='cast'
 urlpatterns = [
 	path('castlist/<int:run_id>/', views.cast_list),
+	path('characterlist/<int:run_id>/', views.character_list),
 ]

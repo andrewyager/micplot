@@ -6,6 +6,17 @@ import logging
 logger = logging.getLogger(__name__)
 
 
+def character_list(request, run_id=0):
+	run = get_object_or_404(Run, pk=run_id)
+	characters = CharacterInShow.objects.filter(run_id=1).select_related('primary_actor').order_by('primary_actor__name')
+
+	context = {
+		'run': run,
+		'characters': characters
+	}
+
+	return render(request, 'cast/character_list.html', context)
+
 def cast_list(request, run_id=0):
 	run = get_object_or_404(Run, pk=run_id)
 	characters = run.show.character_set.all()
