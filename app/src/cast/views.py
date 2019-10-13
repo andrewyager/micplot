@@ -60,7 +60,5 @@ def cast_list(request, run_id=0):
 		'characters_in_show': character_list,
 		'character_groups': group_list,
 	}
-	for character in character_list:
-		logger.warn(character)
 
 	return render(request, 'cast/cast_list.html', context)
