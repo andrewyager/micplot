@@ -6,10 +6,10 @@
 <div class="container">
 		{% for character in characters_in_show %}
 		<div class="row">
-			<div class="col-md-4">{{ character.name }}</div>
+			<div class="col-md-4"><strong>{{ character.name }}</strong></div>
 			<div class="col-md-8">
 		{% for actor in character.actor_list %}
-		<strong>{{ actor.primary_actor.name }}</strong><br />
+		{{ actor.primary_actor.name }}<br />
 		{% endfor %}
 			</div>
 		</div>
