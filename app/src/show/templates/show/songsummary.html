@@ -15,7 +15,7 @@
 	{% endfor %}
 	{% for group in song.featured_groups %}
 		<li>Group: {{ group.name }} (
-		{% for character in group.characters %}
+		{% for character in group.characters.all %}
 			{{ character.name }}{% if not forloop.last %}, {% endif %}{% empty %}We don't know who this is
 		{% endfor %}
 	)</li>{% endfor %}
@@ -41,7 +41,7 @@
 	{% endfor %}
 	{% for group in song.ensemble_groups %}
 	<li>Group: {{ group.name }} (
-		{% for character in group.characters %}
+		{% for character in group.characters.all %}
 			{{ character.name }}{% if not forloop.last %}, {% endif %}{% empty %}We don't know who this is
 		{% endfor %}
 	)</li>
