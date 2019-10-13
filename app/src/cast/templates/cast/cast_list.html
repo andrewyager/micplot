@@ -9,7 +9,7 @@
 			<div class="col-md-4">{{ character.name }}</div>
 			<div class="col-md-8">
 		{% for actor in character.actor_list %}
-		{{ actor.primary_actor.name }}<br />
+		<strong>{{ actor.primary_actor.name }}</strong><br />
 		{% endfor %}
 			</div>
 		</div>
@@ -30,12 +30,12 @@
 </div>
 		{% for group in character_groups %}
 		<div class="row">
-			<div class="col-md-4">{{ group.name }}</div>
+			<div class="col-md-4"><strong>{{ group.name }}</strong></div>
 			<div class="col-md-8">
 		{% for character in group.characters %}
 		<div class="row">
 			<div class="col">
-				{{ character.name }}
+				<em>{{ character.name }}</em>
 			</div>
 			<div class="col">
 			{% for actor in character.actors %}
