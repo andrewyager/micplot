@@ -3,7 +3,6 @@
 {% block title %}Actor List - {{ run.show.name }}{% endblock %}
 {% block content %}
 <h2>{{ run }}</h2>
-<h3>Actor List</h3>
 <div class="container">
 		{% for character in characters %}
 		{% ifchanged character.primary_actor.name %}
