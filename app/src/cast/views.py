@@ -36,7 +36,8 @@ def cast_list(request, run_id=0):
 				'name': character.name,
 				'actors': actor_list
 			}
-			characters.append(co)
+			if actor_list:
+				characters.append(co)
 		go = {
 			'name': group.name,
 			'characters': characters
