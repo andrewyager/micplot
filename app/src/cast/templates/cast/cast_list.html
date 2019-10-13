@@ -1,8 +1,8 @@
 {% extends 'micplot/base.html' %}
 
-{% block title %}Cast List - {{ run.show.name }}{% endblock %}
+{% block title %}Cast List{{ run.show.name }}{% endblock %}
 {% block content %}
-<h2>{{ run }}</h2>
+<h3>{{ run }}</h3>
 		{% for character in characters_in_show %}
 		<div class="row">
 			<div class="col-md-4"><strong>{{ character.name }}</strong></div>
@@ -13,8 +13,8 @@
 			</div>
 		</div>
 		{% endfor %}
-<div class="row">
-	<div class="col-md-12"><h3>Cast Groupings</h3></div>
+<div class="row mb-3 pt-3">
+	<div class="col-md-12"><h4>Cast Groupings</h4></div>
 </div> <!-- end row -->
 <div class="row">
 	<div class="col-md-4">
