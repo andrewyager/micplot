@@ -5,17 +5,17 @@
 {% for song in songs %}
 	<h3>{{ song.name }}</h3>
 	<em>Scene: {{ song.scene }}</em>, <em>Lib Pages {{ song.lib_start_page }} - {{ song.lib_end_page }}</em>
-	{% if song.featured_characters.all or song.featured_groups.all %}
+	{% if song.featured_characters or song.featured_groups %}
 	<div class="row">
 		<div class="col-6">
 	<h4>Featured Characters</h4>
 	<ul>
-	{% for character in song.featured_characters.all %}
+	{% for character in song.featured_characters %}
 		<li>{{ character.name }}</li>
 	{% endfor %}
-	{% for group in song.featured_groups.all %}
+	{% for group in song.featured_groups %}
 		<li>Group: {{ group.name }} (
-		{% for character in group.characters.all %}
+		{% for character in group.characters %}
 			{{ character.name }}{% if not forloop.last %}, {% endif %}{% empty %}We don't know who this is
 		{% endfor %}
 	)</li>{% endfor %}
@@ -31,17 +31,17 @@
 		</div>
 	</div>
 	{% endif %}
-	{% if song.ensemble_characters.all or song.ensemble_groups.all %}
+	{% if song.ensemble_characters or song.ensemble_groups %}
 	<div class="row">
 		<div class="col-6">
 	<h4>Enesemble Characters</h4>
 	<ul>
-	{% for character in song.ensemble_characters.all %}
+	{% for character in song.ensemble_characters %}
 	<li>{{ character.name }}</li>
 	{% endfor %}
-	{% for group in song.ensemble_groups.all %}
+	{% for group in song.ensemble_groups %}
 	<li>Group: {{ group.name }} (
-		{% for character in group.characters.all %}
+		{% for character in group.characters %}
 			{{ character.name }}{% if not forloop.last %}, {% endif %}{% empty %}We don't know who this is
 		{% endfor %}
 	)</li>
