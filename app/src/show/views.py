@@ -30,6 +30,7 @@ def song_detail_list(request, show_id=None, run_id=None):
 		ensemble_groups = [x for x in ensemble_groups if x not in featured_groups]
 		songs.append({
 				**model_to_dict(song),
+				'scene': song.scene,
 				'featured_actor_list': featured_actor_list,
 				'ensemble_actor_list': ensemble_actor_list,
 				'featured_characters': featured_characters,

@@ -12,8 +12,17 @@
 
 	  <div class="collapse navbar-collapse" id="navbarColor01">
 	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item active">
-	        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+	      {% url "cast:castlist" run_id=run.pk as url %}
+	      <li class="nav-item{% if request.get_full_path == url %} active{% endif %}">
+	        <a class="nav-link" href="{{ url }}">Cast and Group List</a>
+	      </li>
+	      {% url "cast:characterlist" run_id=run.pk as url %}
+	      <li class="nav-item{% if request.get_full_path == url %} active{% endif %}">
+	        <a class="nav-link" href="{{ url }}">Character List</a>
+	      </li>
+	      {% url "show:songlist" run_id=run.pk show_id=run.show.pk as url %}
+	      <li class="nav-item{% if request.get_full_path == url %} active{% endif %}">
+	        <a class="nav-link" href="{{ url }}">Song List</a>
 	      </li>
 	    </ul>
 	  </div>
@@ -30,4 +39,48 @@
         {% block content %}(no content){% endblock %}
     </div>
 
+{% endblock %}
+
+{% block bootstrap4_after_content %}
+<!-- Footer -->
+<footer class="page-footer font-small bg-primary text-white pt-4">
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase">Thanks for stopping by</h5>
+        <p>This project is written by <a href="https://andrewyager.com/">Andrew Yager</a>.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mb-md-0 mb-6">
+      	<h5>Want to make MicPlot better?</h5>
+      	<p>The code is hosted on <a href="https://github.com/andrewyager/micplot/">GitHub</a>. Feel free to create an Issue or a PR.</p>
+      </div>
+      <!-- Grid column -->
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">&copy; 2019 Copyright:
+    <a href="https://andrewyager.com">Andrew Yager</a>. Theme from <a href="https://bootswatch.com/flatly/">BootSwatch</a>.
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 {% endblock %}

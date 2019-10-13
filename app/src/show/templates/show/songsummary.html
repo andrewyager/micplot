@@ -2,13 +2,18 @@
 
 {% block title %}Song Detail - {{ show.name }}{% endblock %}
 {% block content %}
+<div class="row">
+	<div class="bs-component">
 {% for song in songs %}
-	<h3>{{ song.name }}</h3>
-	<em>Scene: {{ song.scene }}</em>, <em>Lib Pages {{ song.lib_start_page }} - {{ song.lib_end_page }}</em>
-	{% if song.featured_characters or song.featured_groups %}
+<div class="card mb-3 {% cycle 'bg-light border-light' 'border-light' %} ">
+  <div class="card-header">{{ song.scene }} (<em>Lib Pages {{ song.lib_start_page }} - {{ song.lib_end_page }}</em>)</div>
+  <div class="card-body">
+    <h4 class="card-title">{{ song.name }}</h4>
+    <p class="card-text">
+    	{% if song.featured_characters or song.featured_groups %}
 	<div class="row">
 		<div class="col-6">
-	<h4>Featured Characters</h4>
+	<h5>Featured Characters</h5>
 	<ul>
 	{% for character in song.featured_characters %}
 		<li>{{ character.name }}</li>
@@ -22,7 +27,7 @@
 	</ul>
 		</div>
 		<div class="col-6">
-			<h4>Featured Actors</h4>
+			<h5>Featured Actors</h5>
 			<ul>
 				{% for actor in song.featured_actor_list  %}
 				<li>{{ actor.primary_actor.name }}</li>
@@ -34,7 +39,7 @@
 	{% if song.ensemble_characters or song.ensemble_groups %}
 	<div class="row">
 		<div class="col-6">
-	<h4>Enesemble Characters</h4>
+	<h5>Enesemble Characters</h5>
 	<ul>
 	{% for character in song.ensemble_characters %}
 	<li>{{ character.name }}</li>
@@ -49,7 +54,7 @@
 	</ul>
 </div>
 <div class="col-6">
-	<h4>Ensemble Actors</h4>
+	<h5>Ensemble Actors</h5>
 	<ul>
 		{% for actor in song.ensemble_actor_list %}
 		<li>{{ actor.primary_actor.name }}</li>
@@ -57,6 +62,10 @@
 	</ul>
 </div></div>
 	{% endif %}
-<hr />
+    </p>
+  </div>
+</div>
 {% endfor %}
+</div>
+</div>
 {% endblock %}
