@@ -1,6 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from .models import *
 from django.forms.models import model_to_dict
+from cast.models import *
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -36,3 +41,38 @@ def song_detail_list(request, show_id=None, run_id=None):
 			'run': run,
 			'songs': songs
 		})
+
+def minimal_mic_character_list_by_actor(request, show_id=None, run_id=None):
+	show = get_object_or_404(Show, pk=show_id)
+	run = get_object_or_404(Run, pk=run_id)
+	character_list = []
+
+	character_assignments = CharacterInShow.objects.filter(run=run).select_related('primary_actor').order_by('primary_actor__name')
+
+	last_character = None
+	mic_list = []
+	add = False
+
+	for ca in character_assignments:
+		if last_character != ca.primary_actor:
+			if add:
+				character_list.append(mic_list)
+			add = False
+			last_character = ca.primary_actor
+			mic_list = []
+		if ca.character.character_type.could_use_microphone:
+			add = True
+			mic_list.append(ca.character)
+
+	if add:
+		character_list.append(mic_list)
+
+	return render(request, 'show/charactermicsummary.html', {
+			'show': show,
+			'run': run,
+			'characters': character_list
+		})
+
+
+
+

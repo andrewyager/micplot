@@ -1,0 +1,10 @@
+{% extends 'micplot/base.html' %}
+
+{% block title %}Song Detail - {{ show.name }}{% endblock %}
+{% block content %}
+<ol>
+{% for character_set in characters %}
+<li>{% for character in character_set %}{{character}}{% if not last %}, {% endif%}{% endfor %}</li>
+{% endfor %}
+</ol>
+{% endblock %}

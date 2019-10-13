@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 def character_list(request, run_id=0):
 	run = get_object_or_404(Run, pk=run_id)
-	characters = CharacterInShow.objects.filter(run_id=1).select_related('primary_actor').order_by('primary_actor__name')
+	characters = CharacterInShow.objects.filter(run=run).select_related('primary_actor').order_by('primary_actor__name')
 
 	context = {
 		'run': run,
@@ -23,7 +23,7 @@ def cast_list(request, run_id=0):
 	character_groups = run.show.charactergroup_set.order_by('name')
 	character_list = []
 	for character in characters:
-		characters_in_show = run.characterinshow_set.filter(character=character)
+		characters_in_show = run.characterinshow_set.filter(character=character).order_by('character__name')
 		co = {
 			'name': character.name,
 			'type': character.character_type,

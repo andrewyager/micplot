@@ -140,6 +140,7 @@ class Song(models.Model):
 
 class CharacterType(models.Model):
 	name = models.CharField(max_length=255)
+	could_use_microphone = models.BooleanField(default=True)
 	ordering_preference = models.PositiveIntegerField(default=0)
 
 	def __str__(self):
