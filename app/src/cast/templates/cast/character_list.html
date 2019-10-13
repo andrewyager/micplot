@@ -2,7 +2,7 @@
 
 {% block title %}Actor List - {{ run.show.name }}{% endblock %}
 {% block content %}
-<h2>{{ run }}</h2>
+<h3>{{ run }}</h3>
 		{% for character in characters %}
 		{% ifchanged character.primary_actor.name %}
 		{% if not forloop.first %}
