@@ -1,0 +1,14 @@
+{% extends 'micplot/base.html' %}
+
+{% block title %}Microphone Assignments{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-md-6">
+		<div class="list-group">
+  <a href="{% url 'show:micablecharacters' show_id=show.pk run_id=run.pk %}" class="list-group-item list-group-item-action">
+    Ideal Character List for Microphones based on Character Type
+  </a>
+</div>
+</div>
+</div>
+{% endblock %}

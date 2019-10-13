@@ -24,6 +24,10 @@
 	      <li class="nav-item{% if request.get_full_path == url %} active{% endif %}">
 	        <a class="nav-link" href="{{ url }}">Song List</a>
 	      </li>
+	      {% url "show:micindex" run_id=run.pk show_id=run.show.pk as url %}
+	      <li class="nav-item{% if request.get_full_path == url %} active{% endif %}">
+	        <a class="nav-link" href="{{ url }}">Microphones</a>
+	      </li>
 	    </ul>
 	  </div>
 	</div>
@@ -43,7 +47,7 @@
 
 {% block bootstrap4_after_content %}
 <!-- Footer -->
-<footer class="page-footer font-small bg-primary text-white pt-4">
+<footer class="page-footer font-small bg-primary text-white pt-4 mt-4">
 
   <!-- Footer Links -->
   <div class="container text-center text-md-left">

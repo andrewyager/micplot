@@ -87,6 +87,14 @@ def minimal_mic_character_list_by_actor(request, show_id=None, run_id=None):
 			'characters': character_list
 		})
 
+def micindex(request, show_id=None, run_id=None):
 
+	show = get_object_or_404(Show, pk=show_id)
+	run = get_object_or_404(Run, pk=run_id)
+	
+	return render(request, 'show/micindex.html', {
+			'show': show,
+			'run': run
+		})
 
 
