@@ -23,11 +23,18 @@ def cast_list(request, run_id=0):
 	group_list = []
 	for group in character_groups:
 		characters = []
+		actors = []
 		for character in group.characters.all():
 			characters_in_show = run.characterinshow_set.filter(character=character)
+			actor_list = []
+			for actor in characters_in_show:
+				if actor.primary_actor:
+					if actor.primary_actor.pk not in actors:
+						actors.append(actor.primary_actor.pk)
+						actor_list.append(actor)
 			co = {
 				'name': character.name,
-				'actors': characters_in_show
+				'actors': actor_list
 			}
 			characters.append(co)
 		go = {

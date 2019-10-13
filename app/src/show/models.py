@@ -156,6 +156,7 @@ class Character(models.Model):
 	name = models.CharField(max_length=255)
 	character_type = models.ForeignKey(CharacterType, on_delete=models.CASCADE)
 	scenes = models.ManyToManyField(Scene, blank=True)
+	billing_order = models.IntegerField(default=1)
 
 	def __str__(self):
 		return self.name
@@ -164,6 +165,7 @@ class Character(models.Model):
 		ordering = [
 			'show',
 			'character_type__ordering_preference',
+			'billing_order',
 			'name',
 		]
 
@@ -197,7 +199,9 @@ class Entry(models.Model):
 	scene = models.ForeignKey(
 		Scene,
 		on_delete=models.CASCADE)
+	cue_line = models.TextField(blank=True, null=True)
 	enter_page = models.PositiveIntegerField()
+	page_offset = models.IntegerField(default=0)
 	exit_page = models.PositiveIntegerField(blank=True, null=True)
 	speaks = models.BooleanField(default=True)
 	type = models.CharField(
@@ -221,3 +225,10 @@ class Entry(models.Model):
 			self.scene,
 			self.enter_page,
 			self.type)
+
+	class Meta:
+		ordering = [
+			'show',
+			'enter_page',
+			'page_offset'
+		]

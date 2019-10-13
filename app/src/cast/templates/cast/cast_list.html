@@ -4,33 +4,49 @@
 {% block content %}
 <h2>{{ run }}</h2>
 <h3>Cast List</h3>
-<table>
-	<tbody>
+<div class="container">
 		{% for character in characters_in_show %}
-		<tr>
-			<th>{{ character.name }}</th>
-		</tr>
+		<div class="row">
+			<div class="col-md-4">{{ character.name }}</div>
+			<div class="col-md-8">
 		{% for actor in character.actor_list %}
-		<tr>
-			<td>{{ actor.primary_actor.name }}</td>
-		</tr>
+		{{ actor.primary_actor.name }}<br />
 		{% endfor %}
+			</div>
+		</div>
 		{% endfor %}
-	</tbody>
-</table>
-<h3>Cast Groupings</h3>
-<table>
-	<tbody>
+<div class="row">
+	<div class="col-md-12"><h3>Cast Groupings</h3></div>
+</div> <!-- end row -->
+<div class="row">
+	<div class="col-md-4">
+		<strong>Group</strong>
+	</div>
+	<div class="col-md-4">
+		<strong>Character</strong>
+	</div>
+	<div class="col-md-4">
+		<strong>Actor</strong>
+	</div>
+</div>
 		{% for group in character_groups %}
-		<tr>
-			<th>{{ group.name }}</th>
-		</tr>
+		<div class="row">
+			<div class="col-md-4">{{ group.name }}</div>
+			<div class="col-md-8">
 		{% for character in group.characters %}
-		<tr>
-			<td>{{ character.name }} ({% for actor in character.actors %}{{actor.primary_actor.name}}{% if not forloop.last %}, {% endif%}{%endfor%})</td>
-		</tr>
+		<div class="row">
+			<div class="col">
+				{{ character.name }}
+			</div>
+			<div class="col">
+			{% for actor in character.actors %}
+				{{actor.primary_actor.name}}<br />
+			{%endfor%}
+			</div>
+		</div> <!-- end row -->
 		{% endfor %}
+	</div>
+</div> <!-- end row -->
 		{% endfor %}
-	</tbody>
-</table>
+</div>
 {% endblock %}

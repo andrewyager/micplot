@@ -58,6 +58,7 @@ THIRDPARTY_APPS = [
 LOCAL_APPS = [
     'show.apps.ShowConfig',
     'cast.apps.CastConfig',
+    'microphone.apps.MicrophoneConfig'
 ]
 
 INSTALLED_APPS = ADMIN_APPS + THIRDPARTY_APPS + DJANGO_APPS + LOCAL_APPS
