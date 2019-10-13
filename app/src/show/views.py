@@ -56,7 +56,10 @@ def minimal_mic_character_list_by_actor(request, show_id=None, run_id=None):
 	for ca in character_assignments:
 		if last_character != ca.primary_actor:
 			if add:
-				character_list.append(mic_list)
+				character_list.append({
+					'actor': last_character,
+					'micable_characters': mic_list,
+					})
 			add = False
 			last_character = ca.primary_actor
 			mic_list = []
@@ -65,7 +68,10 @@ def minimal_mic_character_list_by_actor(request, show_id=None, run_id=None):
 			mic_list.append(ca.character)
 
 	if add:
-		character_list.append(mic_list)
+		character_list.append({
+					'actor': last_character,
+					'micable_characters': mic_list,
+					})
 
 	return render(request, 'show/charactermicsummary.html', {
 			'show': show,

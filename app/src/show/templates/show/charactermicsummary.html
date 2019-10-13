@@ -1,10 +1,10 @@
 {% extends 'micplot/base.html' %}
 
-{% block title %}Song Detail - {{ show.name }}{% endblock %}
+{% block title %}Ideal Mic Allocation - {{ show.name }}{% endblock %}
 {% block content %}
 <ol>
 {% for character_set in characters %}
-<li>{% for character in character_set %}{{character}}{% if not last %}, {% endif%}{% endfor %}</li>
+<li>{% for character in character_set.micable_characters %}{{character}}{% if not forloop.last %}, {% else %} ({{character_set.actor.name}}){% endif%}{% endfor %}</li>
 {% endfor %}
 </ol>
 {% endblock %}
