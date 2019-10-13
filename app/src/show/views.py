@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import *
 from django.forms.models import model_to_dict
 from cast.models import *
+from microphone.models import *
 
 import logging
 
@@ -56,9 +57,12 @@ def minimal_mic_character_list_by_actor(request, show_id=None, run_id=None):
 	for ca in character_assignments:
 		if last_character != ca.primary_actor:
 			if add:
+				mic = MicrophoneAssignment.objects.filter(show=show, run=run, character__in=mic_list)
+				logger.warn(mic)
 				character_list.append({
 					'actor': last_character,
 					'micable_characters': mic_list,
+					'mics': mic
 					})
 			add = False
 			last_character = ca.primary_actor
@@ -68,9 +72,12 @@ def minimal_mic_character_list_by_actor(request, show_id=None, run_id=None):
 			mic_list.append(ca.character)
 
 	if add:
+		mic = MicrophoneAssignment.objects.filter(show=show, run=run, character__in=mic_list)
+		logger.warn(mic)
 		character_list.append({
 					'actor': last_character,
 					'micable_characters': mic_list,
+					'mics': mic,
 					})
 
 	return render(request, 'show/charactermicsummary.html', {

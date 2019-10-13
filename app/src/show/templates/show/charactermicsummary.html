@@ -4,7 +4,7 @@
 {% block content %}
 <ol>
 {% for character_set in characters %}
-<li>{% for character in character_set.micable_characters %}{{character}}{% if not forloop.last %}, {% else %} ({{character_set.actor.name}}){% endif%}{% endfor %}</li>
+<li>{% for character in character_set.micable_characters %}{{character}}{% if not forloop.last %}, {% else %} ({{character_set.actor.name}}){% endif%}{% if character_set.mics %} - {% for mic in character_set.mics %}<em>{{mic.microphone}}</em>{% endfor %}{% endif%}{% endfor %}</li>
 {% endfor %}
 </ol>
 {% endblock %}
