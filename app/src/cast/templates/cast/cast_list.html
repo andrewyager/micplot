@@ -3,7 +3,6 @@
 {% block title %}Cast List - {{ run.show.name }}{% endblock %}
 {% block content %}
 <h2>{{ run }}</h2>
-<div class="container">
 		{% for character in characters_in_show %}
 		<div class="row">
 			<div class="col-md-4"><strong>{{ character.name }}</strong></div>
@@ -47,5 +46,4 @@
 	</div>
 </div> <!-- end row -->
 		{% endfor %}
-</div>
 {% endblock %}

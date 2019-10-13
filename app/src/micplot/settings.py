@@ -45,6 +45,7 @@ DJANGO_APPS = [
 ]
 
 ADMIN_APPS = [
+    'micplot',
     'jet',
     'reversion',
     'import_export',
@@ -187,4 +188,5 @@ JET_CHANGE_FORM_SIBLING_LINKS = False
 
 BOOTSTRAP4 = {
     'include_jquery': True,
+    "css_url": STATIC_URL+"micplot/css/bootstrap.min.css"
 }
