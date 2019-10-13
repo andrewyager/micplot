@@ -20,7 +20,7 @@ def character_list(request, run_id=0):
 def cast_list(request, run_id=0):
 	run = get_object_or_404(Run, pk=run_id)
 	characters = run.show.character_set.all()
-	character_groups = run.show.charactergroup_set.all()
+	character_groups = run.show.charactergroup_set.order_by('name')
 	character_list = []
 	for character in characters:
 		characters_in_show = run.characterinshow_set.filter(character=character)
