@@ -8,9 +8,9 @@
 {% for character_set in characters %}
 <div class="col-lg-4">
 	<div class="card border-light mb-3 mr-3" style="max-width: 20rem;"">
-		<div class="card-header">{% if character_set.mics %}{% for mic in character_set.mics %}<em>{{mic.microphone}}</em><br />{% endfor %}{% else %}Not Allocated{% endif%}</div>
+		<div class="card-header">{{character_set.actor.name}}</div>
 		<div class="card-body">
-			<h4 class="card-title">{{character_set.actor.name}}</h4>
+			<h5 class="card-title">{% if character_set.mics %}{% for mic in character_set.mics %}{{mic.microphone}}<br />{% endfor %}{% else %}Not Allocated{% endif%}</h5>
 			<p class="card-text">
 					{% for character in character_set.micable_characters %}
 						{{character}}<br />
