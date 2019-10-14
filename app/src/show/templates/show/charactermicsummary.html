@@ -10,7 +10,6 @@
 	<div class="card border-light mb-3 mr-3" style="max-width: 20rem;"">
 		<div class="card-header">{{character_set.actor.name}}</div>
 		<div class="card-body">
-				<h5>Characters played with mics</h5>
 				<p class="card-text">{% for character in character_set.micable_characters %}
 						{% if not character.microphoneassignment_set.all|length %}<strong class="text-warning">{{character}}</strong>{%else %}
 						<strong>{{character}}</strong><br />
