@@ -13,8 +13,8 @@
 				<h5>Microphones assigned</h5>
 				<p class="card-text">{% if character_set.mics %}{% for mic in character_set.mics %}{{mic.microphone}}<br />{% endfor %}{% else %}<span class="text-warning">None allocated yet</span>{% endif%}</p>
 				<h5>Characters played with mics</h5>
-				<p class="card-text">	{% for character in character_set.micable_characters %}
-						{{character}}<br />
+				<p class="card-text">{% for character in character_set.micable_characters %}
+						{% if not character.microphoneassignment_set.all|length %}<span class="text-warning">{{character}}</span>{%else %}{{character}}{%endif%}<br />
 					{% endfor %}
 				</p>
 				
