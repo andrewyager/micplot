@@ -94,10 +94,16 @@ def minimal_mic_character_list_by_actor(request, show_id=None, run_id=None):
                 'mics': mic
                 })
 
+    microphones = Microphone.objects.all()
+    characters = mic_assigned + nomic_assigned
     return render(request, 'show/charactermicsummary.html', {
             'show': show,
             'run': run,
-            'characters': mic_assigned + nomic_assigned
+            'characters': characters,
+            'mic_assigned': mic_assigned,
+            'nomic_assigned': nomic_assigned,
+            'microphones': microphones,
+            'changes': len(characters) - len(microphones)
         })
 
 def micindex(request, show_id=None, run_id=None):

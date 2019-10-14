@@ -2,6 +2,8 @@
 
 {% block title %}Ideal Mic Allocation - {{ show.name }}{% endblock %}
 {% block content %}
+<p class="lead">There are {{ characters|length }} individual people that could use a microphone in this show.</p>
+<p>Of these, {{ mic_assigned|length }} currently have a microphone/number assigned to them and {{ nomic_assigned|length }} do not. All up, we currently have {{ microphones|length }} micophones available, which means at least {{ changes }} changes.</p>
 <div class="row">
 {% for character_set in characters %}
 <div class="col-lg-4">
