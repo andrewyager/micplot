@@ -64,14 +64,12 @@ def minimal_mic_character_list_by_actor(request, show_id=None, run_id=None):
                 if mic:
                     mic_assigned.append({
                         'actor': last_character,
-                        'micable_characters': mic_list,
-                        'mics': mic
+                        'micable_characters': mic_list
                         })
                 else:
                     nomic_assigned.append({
                         'actor': last_character,
-                        'micable_characters': mic_list,
-                        'mics': mic
+                        'micable_characters': mic_list
                         })
             add = False
             last_character = ca.primary_actor
@@ -84,14 +82,12 @@ def minimal_mic_character_list_by_actor(request, show_id=None, run_id=None):
         if mic:
             mic_assigned.append({
                         'actor': last_character,
-                        'micable_characters': mic_list,
-                        'mics': mic
+                        'micable_characters': mic_list
                         })
         else:
             nomic_assigned.append({
                 'actor': last_character,
-                'micable_characters': mic_list,
-                'mics': mic
+                'micable_characters': mic_list
                 })
 
     microphones = Microphone.objects.all()

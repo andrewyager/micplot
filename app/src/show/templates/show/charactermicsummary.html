@@ -10,11 +10,14 @@
 	<div class="card border-light mb-3 mr-3" style="max-width: 20rem;"">
 		<div class="card-header">{{character_set.actor.name}}</div>
 		<div class="card-body">
-				<h5>Microphones assigned</h5>
-				<p class="card-text">{% if character_set.mics %}{% for mic in character_set.mics %}{{mic.microphone}}<br />{% endfor %}{% else %}<span class="text-warning">None allocated yet</span>{% endif%}</p>
 				<h5>Characters played with mics</h5>
 				<p class="card-text">{% for character in character_set.micable_characters %}
-						{% if not character.microphoneassignment_set.all|length %}<span class="text-warning">{{character}}</span>{%else %}{{character}}{%endif%}<br />
+						{% if not character.microphoneassignment_set.all|length %}<strong class="text-warning">{{character}}</strong>{%else %}
+						<strong>{{character}}</strong><br />
+						{% for mic in character.microphoneassignment_set.all %}
+						{{ mic.microphone }}<br />
+						{% endfor %}
+						{%endif%}<br />
 					{% endfor %}
 				</p>
 				
