@@ -3,6 +3,9 @@
 {% block title %}Actor List - {{ run.show.name }}{% endblock %}
 {% block content %}
 <h3>{{ run }}</h3>
+<p>
+	<a href="{% url 'cast:characterlistwavetool' run.id %}" class="btn btn-primary">Download WaveTool Players List</a>
+</p>
 		{% for character in characters %}
 		{% ifchanged character.primary_actor.name %}
 		{% if not forloop.first %}
