@@ -3,13 +3,13 @@ from . import views
 
 app_name = "cast"
 urlpatterns = [
-    re_path("castlist/<int:run_id>/", views.cast_list, name="castlist"),
-    re_path(
+    path("castlist/<int:run_id>/", views.cast_list, name="castlist"),
+    path(
         "characterlist/<int:run_id>/",
         views.character_list,
         name="characterlist",
     ),
-    re_path(
+    path(
         "characterlist/<int:run_id>/wavetool/",
         views.cast_export,
         name="characterlistwavetool",
