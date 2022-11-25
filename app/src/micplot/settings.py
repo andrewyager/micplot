@@ -50,7 +50,7 @@ DJANGO_APPS = [
 
 ADMIN_APPS = [
     "micplot",
-    "jet",
+    "jazzmin",
     "reversion",
     "import_export",
 ]
@@ -184,9 +184,19 @@ MARKDOWN_DEUX_STYLES = {
     },
 }
 
-JET_DEFAULT_THEME = "light-green"
-JET_SIDE_MENU_COMPACT = True
-JET_CHANGE_FORM_SIBLING_LINKS = False
+JAZZMIN_SETTINGS = {
+    "site_title": "MicPlot",
+    "site_header": "MicPlot",
+    "search_model": "show.Show",
+    "copyright": "Real World Group",
+    "show_ui_builder": True,
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "flatly",
+    "dark_mode_theme": "darkly",
+}
+
 
 BOOTSTRAP4 = {
     "include_jquery": True,
