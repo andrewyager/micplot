@@ -1,7 +1,9 @@
 version: "2.0"
 services:
   pg:
-    image: postgres:10
+    image: postgres:12
+    env_file:
+      - .env
     volumes:
       - ./data/pgdata/db:/var/lib/postgresql/data
       - ./data/pgdata/etc:/etc/postgresql

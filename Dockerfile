@@ -1,7 +1,5 @@
-FROM python:3.6
+FROM python:3.10
 
-RUN pip install devpi-client
-RUN devpi use --set-cfg https://devpi.realworld.net.au/realworld/prod
 RUN mkdir /opt/app
 COPY ./app/requirements.txt /opt/app/requirements.txt
 RUN pip install -U -r /opt/app/requirements.txt
