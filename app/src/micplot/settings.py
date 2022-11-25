@@ -32,6 +32,9 @@ except:
     DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = os.environ.get("DOMAIN_LIST", "http://localhost").split(
+    ","
+)
 
 
 # Application definition
