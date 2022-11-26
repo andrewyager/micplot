@@ -125,6 +125,24 @@ def minimal_mic_character_list_by_actor(request, show_id=None, run_id=None):
     )
 
 
+def channel_list(request, show_id=None, run_id=None):
+    show = get_object_or_404(Show, pk=show_id)
+    run = get_object_or_404(Run, pk=run_id)
+
+    character_assignments = MicrophoneAssignment.objects.filter(
+        run=run
+    ).order_by("microphone__rx_number", "character__primary_actor__name")
+    return render(
+        request,
+        "show/mic_channel.html",
+        {
+            "show": show,
+            "run": run,
+            "channels": character_assignments,
+        },
+    )
+
+
 def micindex(request, show_id=None, run_id=None):
 
     show = get_object_or_404(Show, pk=show_id)

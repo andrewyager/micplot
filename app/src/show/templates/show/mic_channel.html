@@ -1,0 +1,27 @@
+{% extends 'micplot/base.html' %}
+
+{% block title %}Microphone Assignments{% endblock %}
+{% block content %}
+<table class="table">
+	<thead>
+		<tr>
+			<th>Channel Number</th>
+			<th>Character</th>
+			<th>Actor</th>
+			<th>Microphone RX Number</th>
+			<th>Mic Type</th>
+		</tr>
+	</thead>
+	<tbody>
+{% for channel in channels %}
+<tr>
+	<td>{{forloop.counter}}</td>
+	<td>{{channel.character.name}}</td>
+	<td>{{channel.character.primary_actor.name}}</td>
+	<td>{{channel.microphone.rx_number}}</td>
+	<td>{{channel.microphone.model}}</td>
+</tr>
+{% endfor %}
+	</tbody>
+</table>
+{% endblock content %}
